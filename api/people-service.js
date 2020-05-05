@@ -7,7 +7,8 @@ module.exports = class PeopleService {
 
     async updatePeople(id, people) {
         const result = this.peoples.filter(people => parseInt(people.id) === parseInt(id));
-        if (result === 'undefined' || result.length === 0) {
+        let nullValue = 0;
+        if (result === 'undefined' || result.length === nullValue) {
             return false;
         }
         result[0].name = people.name;
@@ -32,9 +33,10 @@ module.exports = class PeopleService {
     }
 
     isEmpty(obj) {
-        if (obj == null) return true;
-        if (obj.length > 0)    return false;
-        if (obj.length === 0)  return true;
+        let nullValue = 0;
+        if (obj === null) return true;
+        if (obj.length > nullValue)    return false;
+        if (obj.length === nullValue)  return true;
         if (typeof obj !== "object") return true;
         for (var key in obj) {
             if (hasOwnProperty.call(obj, key)) return false;

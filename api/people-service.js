@@ -27,8 +27,12 @@ module.exports = class PeopleService {
         if(this.isEmpty(filters)){
             return this.peoples;
         }
-        const result = this.peoples.filter((people) => people.gender === filters.gender);
 
+        const result =  this.peoples.filter(people => {
+            return Object.keys(filters).every(key => {
+                return people[key] === filters[key];
+            });
+        });
         return result;
     }
 
